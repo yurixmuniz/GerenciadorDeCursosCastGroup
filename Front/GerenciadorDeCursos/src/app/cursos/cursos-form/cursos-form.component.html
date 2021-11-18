@@ -1,0 +1,64 @@
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Cursos</h1>
+  <div class="col-md-3">
+    <a href=""><button class="btn btn-secondary btn-lg">voltar</button></a>
+  </div>
+</div>
+<div class="container-fluid">
+  <form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="cursoId" [value]="service.formData.cursoId" />
+    <div class="form-group">
+      <label>Curso</label>
+      <input class="form-control form-control-lg" placeholder="informe o nome do curso" name="nome" #nome="ngModel"
+        [(ngModel)]="service.formData.nome" required [class.invalid]="nome.invalid && nome.touched">
+        <span style="color: red;" *ngIf="nome.invalid && nome.touched">Preencha o Campo</span>
+    </div>
+    <div class="form-group">
+      <label>Descrição</label>
+      <textarea type="text" class="form-control form-control-lg" placeholder="informe uma descrição sobre o curso"
+        name="descricao" #descricao="ngModel" [(ngModel)]="service.formData.descricao" required
+        [class.invalid]="descricao.invalid && descricao.touched"></textarea>
+        <span style="color: red;" *ngIf="descricao.invalid && descricao.touched">Preencha o Campo</span>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Data De Inicio</label>
+        <input type="date" class="form-control form-control-lg" min="{{dtHoje}}"
+          placeholder="DD/MM/YYYY" name="dtInicio" #dtInicio="ngModel" [(ngModel)]="service.formData.dtInicio"
+          required [class.invalid]="dtInicio.invalid && dtInicio.touched"
+          (submit)="dataExistente(service.formData.dtInicio)">
+          <span style="color: red;" *ngIf="dtInicio.invalid && dtInicio.touched">Preencha o Campo</span>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Data De Término</label>
+        <input type="date" class="form-control form-control-lg" min="{{service.formData.dtInicio}}"
+          placeholder="DD/MM/YY" name="dtTermino" #dtTermino="ngModel" [(ngModel)]="service.formData.dtTermino" required
+          [class.invalid]="dtTermino.invalid && dtTermino.touched">
+          <span style="color: red;" *ngIf="dtTermino.invalid && dtTermino.touched">Preencha o Campo</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Quantidade de Alunos</label>
+        <input type="text" class="form-control form-control-lg" placeholder="informe o numero de estudantes do curso"
+          name="qtdAlunos" #qtdAlunos="ngModel" [(ngModel)]="service.formData.qtdAlunos" required
+          [class.invalid]="qtdAlunos.invalid && qtdAlunos.touched">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Categoria</label>
+        <select type="text" class="form-control form-control-lg" placeholder="Categoria" name="categoriaId"
+          #categoriaId="ngModel" [(ngModel)]="service.formData.categoriaId" required
+          [class.invalid]="categoriaId.invalid && categoriaId.touched">
+          <option [value]=""></option>
+          <option *ngFor="let categoria of this.serviceCategoria.list" [value]="categoria.categoriaId">
+            {{categoria.nome}}</option>
+        </select>
+        <span style="color: red;" *ngIf="categoriaId.invalid && categoriaId.touched">Preencha o Campo</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-lg btn-block" type="submit"[disabled]="form.invalid">Cadastrar</button>
+    </div>
+  </form>
+
+</div>

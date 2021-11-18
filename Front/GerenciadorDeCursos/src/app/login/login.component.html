@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <form class="container-fluid">
+    <div class="container-login">
+      <form class="d-flex" #form="ngForm" (ngSubmit)="serviceLogin.login(form)"
+        *ngIf="serviceLogin.usuarioLogado == null">
+        <div class="col mb-2">
+          <div class="row">
+            <label style="justify-content: flex-start;">Login</label>
+            <input class="form-control mb-4" name="login" type="text" #login="ngModel"
+              [(ngModel)]="serviceLogin.model.login" aria-label="Login">
+          </div>
+          <div class="row">
+            <label>Password</label>
+            <input class="form-control mb-4" name="senha" type="password" #senha="ngModel"
+              [(ngModel)]="serviceLogin.model.senha" aria-label="Senha">
+          </div>
+          <div class="row" style="justify-content: center;">
+            <button class="btn btn-outline-success" type="submit">Entrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </form>
+</div>

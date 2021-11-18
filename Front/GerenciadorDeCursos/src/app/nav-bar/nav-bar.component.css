@@ -1,0 +1,10 @@
+.background{
+  font-family: 'Poppins', sans-serif;
+  background-color: black ;
+  background-size: cover;
+}
+
+.img-prop{
+  margin-top: -15px;
+  margin-left: -30%;
+}

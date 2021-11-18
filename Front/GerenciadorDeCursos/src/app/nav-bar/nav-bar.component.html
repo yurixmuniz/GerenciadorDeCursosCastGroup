@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg absolute" style="background-color: rgb(34, 34, 110);">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style="color: rgb(221, 221, 221); font-size: large;" routerLink="login"
+            *ngIf="service.usuarioLogado == null">Login</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn"
+            style="background-color: transparent; color: rgb(221, 221, 221); outline-color: rgb(221, 221, 221); margin-top: 4px;"
+            type="submit" routerLink="login" *ngIf="service.usuarioLogado == null">
+            <i class="fas fa-sign-in-alt"></i></button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: rgb(221, 221, 221); font-size: large;" routerLink="cadastrar"
+            *ngIf="service.usuarioLogado">Cadastrar Curso</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn"
+            style="background-color: transparent; margin-right: 15px; color: rgb(221, 221, 221); outline-color: rgb(221, 221, 221); margin-top: 4px;"
+            type="submit" routerLink="cadastrar" *ngIf="service.usuarioLogado">
+            <i class="fas fa-clipboard-check"></i></button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: rgb(221, 221, 221); font-size: large;" routerLink="cursos"
+            *ngIf="service.usuarioLogado">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn"
+            style="background-color: transparent; margin-right: 15px; color: rgb(221, 221, 221); outline-color: rgb(221, 221, 221); margin-top: 4px;"
+            type="submit" routerLink="cursos" *ngIf="service.usuarioLogado">
+            <i class="fas fa-chalkboard"></i></button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: rgb(221, 221, 221); font-size: large;" routerLink="log"
+            *ngIf="service.usuarioLogado">Log</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn"
+            style="background-color: transparent; margin-right: 15px;  color: rgb(221, 221, 221); outline-color: rgb(221, 221, 221); margin-top: 4px;"
+            type="submit" routerLink="log" *ngIf="service.usuarioLogado">
+            <i class="fas fa-folder-open"></i></button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: rgb(216, 0, 0); font-size: large;" (click)="service.logout()"
+            *ngIf="service.usuarioLogado">Logout</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-danger" style="background-color: transparent; margin-right: 15px;"
+            (click)="service.logout()" type="submit" *ngIf="service.usuarioLogado"><i
+              class="fas fa-sign-out-alt"></i></button>
+        </li>
+
+      </ul>
+      <!--
+        <button class="btn btn-outline-success" style="background-color: transparent; margin-right: 0.5%;" type="submit" routerLink="login" *ngIf="service.usuarioLogado == null"><i class="fas fa-sign-in-alt"></i></button>
+        <button class="btn btn-outline-success" style="background-color: transparent;" type="submit"  routerLink="usuario/cadastro" *ngIf="service.usuarioLogado == null">
+          <i class="fas fa-clipboard-check"></i></button>
+
+        <button class="btn btn-outline-danger" style="background-color: transparent;" (click)="service.logout()" type="submit" *ngIf="service.usuarioLogado" ><i class="fas fa-sign-out-alt"></i></button> -->
+    </div>
+  </div>
+</nav>

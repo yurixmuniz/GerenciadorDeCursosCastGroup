@@ -1,0 +1,47 @@
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Cursos</h1>
+</div>
+
+<div action="" class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="filtro">
+
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="table">
+      <table class="table" id="formato">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Nome</th>
+                  <th>Decrição</th>
+                  <th>Data de Inicio</th>
+                  <th>Data de Término</th>
+                  <th>Quantidade de alunos</th>
+                  <th>Categoria</th>
+                  <th></th>
+                  <th></th>
+
+
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let curso of service.list | filtrado:filtro">
+                  <td (click)="populateForm(curso)">{{curso.nome}}</td>
+                  <td (click)="populateForm(curso)">{{curso.descricao}}</td>
+                  <td (click)="populateForm(curso)">{{curso.dtInicio|date:'dd-MM-yyyy'}}</td>
+                  <td (click)="populateForm(curso)">{{curso.dtTermino|date:'dd-MM-yyyy'}}</td>
+                  <td (click)="populateForm(curso)">{{curso.qtdAlunos}}</td>
+                  <td (click)="populateForm(curso)">{{getCategoria(curso.categoriaId)}}</td>
+                  <td>
+                  <i class="fas fa-pen fa-lg text-primary" (click)="populateForm(curso)"></i>
+                  </td>
+                  <td>
+                      <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(curso.cursoId)"></i>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

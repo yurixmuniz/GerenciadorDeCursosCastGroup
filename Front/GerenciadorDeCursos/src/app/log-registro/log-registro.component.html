@@ -1,0 +1,29 @@
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Log de Registros</h1>
+</div>
+
+<div class="container-fluid">
+  <div class="table">
+      <table class="table" id="formato">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Responsavél pela modificação</th>
+                  <th>Curso modificado</th>
+                  <th>Alteração realizada</th>
+                  <th>Data de inserção</th>
+                  <th>Data da ultima atualização</th>
+
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let log of service.list">
+                  <td>{{this.getUsuario(log.usuarioId)}}</td>
+                  <td>{{getCurso(log.cursoId)}}</td>
+                  <td>{{log.alteracao}}</td>
+                  <td>{{log.dtInclusao|date:'dd-MM-yyyy'}}</td>
+                  <td>{{log.dtAlteracao|date:'dd-MM-yyyy'}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
